@@ -1,0 +1,11 @@
+/* resources/css/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.select-padding {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+}

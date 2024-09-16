@@ -1,0 +1,68 @@
+#-------------------------
+# OS Specific Junk Files
+#-------------------------
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+Desktop.ini
+
+#-------------------------
+# Environment and Configuration Files
+#-------------------------
+.env
+.vagrant
+Vagrantfile
+
+#-------------------------
+# Temporary and Cache Files
+#-------------------------
+writable/cache/*
+!writable/cache/index.html
+
+writable/logs/*
+!writable/logs/index.html
+
+writable/session/*
+!writable/session/index.html
+
+writable/uploads/*
+!writable/uploads/index.html
+
+writable/debugbar/*
+!writable/debugbar/.gitkeep
+
+php_errors.log
+
+#-------------------------
+# User Guide (Optional)
+#-------------------------
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#-------------------------
+# Test Files
+#-------------------------
+tests/coverage*
+
+#-------------------------
+# Composer
+#-------------------------
+vendor/
+
+#-------------------------
+# IDE / Editor Config
+#-------------------------
+# Jetbrains (PHPStorm, Webstorm)
+.idea/
+# Visual Studio Code
+.vscode/
+
+#-------------------------
+# Vite Build Files (ignore in development)
+#-------------------------
+public/build/*
+# Ensure directory structure exists
+!public/build/.gitkeep
