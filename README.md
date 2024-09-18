@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed:
 
 Clone the repository to your local machine:
 ```bash
-git clone git@bitbucket.org:verco/ci-vite-vue.git
+git clone https://github.com/vilmavnex/ci-vite-vue.git
 ```
 
 ## Installation
