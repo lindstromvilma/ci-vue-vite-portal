@@ -8,6 +8,24 @@ class HomeController extends BaseController
     {
         $data = [
             'message' => 'Tervetuloa Luukkuun!',
+						'news' => [
+				        [
+				            'title' => 'Uusi Luukku avattu',
+				            'date' => '2024-09-01',
+				        ],
+				        [
+				            'title' => 'Tiedote uusista ominaisuuksista',
+				            'date' => '2023-08-02',
+				        ],
+				        [
+				            'title' => 'Henkilöhaut toimivat',
+				            'date' => '2023-04-20',
+				        ],
+				        [
+				            'title' => 'Tietokanta päivitetty',
+				            'date' => '2023-02-08',
+				        ]
+				    ]
         ];
 
         return view('app', ['page' => 'Home', 'data' => json_encode($data)]);
@@ -29,14 +47,5 @@ class HomeController extends BaseController
         ];
 
         return view('app', ['page' => 'Ticket', 'data' => json_encode($data)]);
-    }
-
-		public function persons(): string
-    {
-        $data = [
-            'message' => 'Työntekijät',
-        ];
-
-        return view('app', ['page' => 'Persons', 'data' => json_encode($data)]);
     }
 }
