@@ -35,9 +35,9 @@ const removeItem = (index) => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-10 text-black w-full max-w-screen-xl">
+  <div class="flex flex-col gap-10 text-black w-full max-w-screen-2xl">
     <h1 class="text-2xl font-normal">
-      {{ props.message }}
+      {{ message }}
     </h1>
     <div class="flex flex-col self-center gap-10 w-full">
       <div class="flex flex-col gap-6">

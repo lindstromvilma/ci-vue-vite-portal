@@ -38,11 +38,11 @@ const showDatePicker = computed(() => form.value.duration === 'Määräajaksi')
 </script>
 
 <template>
-  <div class="flex flex-col gap-10 text-black w-full max-w-screen-xl">
+  <div class="flex flex-col gap-10 text-black w-full max-w-screen-2xl">
     <h1 class="text-2xl font-normal">
-      {{ props.message }}
+      {{ message }}
     </h1>
-    <form class="flex flex-col self-center gap-4 w-full max-w-screen-lg">
+    <form class="flex flex-col self-center gap-4 w-full">
       <div class="w-full">
         <InputLabel
           for="applicant"
