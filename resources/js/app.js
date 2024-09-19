@@ -1,16 +1,21 @@
-import { createApp, defineAsyncComponent } from 'vue';
-import App from './App.vue';
-import '../css/app.css';
+import { createApp, defineAsyncComponent } from 'vue'
+import App from './App.vue'
+import '../css/app.css'
 
-const app = createApp(App);
+const app = createApp(App) // create Vue app instance
 
-const page = document.getElementById('app').dataset.page;
-const props = JSON.parse(document.getElementById('app').dataset.props);
+const appElement = document.getElementById('app')
+const { page, props } = appElement.dataset
 
-const DynamicComponent = defineAsyncComponent(() => import(`./Pages/${page}.vue`));
+const parsedProps = JSON.parse(props || '{}') // parse the props from the dataset
+appElement.removeAttribute('data-props')
 
-app.component('dynamic-page', DynamicComponent);
+// define the async component
+const DynamicComponent = defineAsyncComponent(() =>
+	import(`./Pages/${page}.vue`)
+)
 
-app.provide('pageProps', props);
+app.component('DynamicPage', DynamicComponent) // register the component
 
-app.mount('#app');
+app.provide('pageProps', parsedProps) // provide the props to the component
+app.mount('#app') // mount the app to the DOM
