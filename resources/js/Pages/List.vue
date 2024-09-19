@@ -11,12 +11,16 @@ const props = defineProps({
 		type: String,
 		required: true,
 	},
+	list: {
+		type: Array,
+		default: () => [],
+	},
 })
 
 const item = ref('')
 const errors = ref('')
 const isSubmitting = ref(false)
-const items = ref([])
+const list = ref(props.list || [])
 
 const addItem = () => {
 	if (item.value.trim() === '') {
@@ -24,13 +28,13 @@ const addItem = () => {
 		return
 	}
 
-	items.value.push(item.value)
+	list.value.push(item.value)
 	item.value = ''
 	errors.value = ''
 }
 
 const removeItem = (index) => {
-	items.value.splice(index, 1)
+	list.value.splice(index, 1)
 }
 </script>
 
@@ -66,7 +70,7 @@ const removeItem = (index) => {
       </div>
       <div class="flex flex-col gap-4">
         <div
-          v-for="(item, index) in items"
+          v-for="(item, index) in list"
           :key="index"
           class="news-item border-b py-2 flex justify-between items-center"
         >
