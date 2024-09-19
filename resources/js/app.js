@@ -7,7 +7,7 @@ const app = createApp(App) // create Vue app instance
 const appElement = document.getElementById('app')
 const { page, props } = appElement.dataset
 
-const parsedProps = JSON.parse(props || '{}') // parse the props from the dataset
+const parsedProps = JSON.parse(props) // parse the props from the dataset
 appElement.removeAttribute('data-props')
 
 // define the async component
