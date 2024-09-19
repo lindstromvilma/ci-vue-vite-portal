@@ -35,6 +35,7 @@ class HomeController extends BaseController
     {
         $data = [
             'message' => 'Oma lista - Lisää listaan asioita ja posita turhat',
+						'list' => [],
         ];
 
         return view('app', ['page' => 'List', 'data' => json_encode($data)]);
@@ -44,6 +45,12 @@ class HomeController extends BaseController
     {
         $data = [
             'message' => 'Asiointilippu hakemus',
+						'popovers' => [
+				        [
+										'id' => 'duration',
+				            'content' => 'Valitse toistaiseksi, jos lupa on voimassa toistaiseksi. Valitse määräajaksi, jos lupa on voimassa määräajan.',
+				        ],
+						],
         ];
 
         return view('app', ['page' => 'Ticket', 'data' => json_encode($data)]);
