@@ -6,6 +6,7 @@ class PersonController extends BaseController
 {
 		public function persons(): string
 		{
+				// testi data
 				$data = [
 						'message' => 'Työntekijät',
 						'persons' => [
