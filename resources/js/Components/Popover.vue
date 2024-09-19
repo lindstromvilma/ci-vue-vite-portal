@@ -1,41 +1,35 @@
-<template>
-  <div class="relative inline-block">
-    <slot name="trigger"></slot>
-    <div
-      v-if="visible"
-      class="absolute z-10 w-64 p-2 mt-2 text-sm text-white bg-black rounded shadow-lg"
-      :style="{ top: position.top, left: position.left }"
-    >
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
-	position: {
-		type: Object,
-		default: () => ({ top: '100%', left: '50%' })
-	}
+	content: {
+		type: String,
+		default: '',
+	},
 })
 
 const visible = ref(false)
 
-function show() {
-	visible.value = true
+function toggle() {
+	visible.value = !visible.value
 }
-
-function hide() {
-	visible.value = false
-}
-
-onMounted(() => {
-	document.addEventListener('click', hide)
-})
-
-onBeforeUnmount(() => {
-	document.removeEventListener('click', hide)
-})
 </script>
+
+<template>
+  <div class="relative flex items-center gap-4">
+    <button
+      class="text-white font-bold text-base subpixel-antialiased px-4 py-2 rounded-full bg-blue-300 active:bg-blue-400 hover:bg-blue-400 outline-none focus:outline-none ease-linear transition-all duration-150"
+      type="button"
+      @focusout="visible = false"
+      @click="toggle()"
+    >
+      ?
+    </button>
+    <div
+      v-show="visible"
+      class="absolute right-full bg-white z-50 font-normal text-sm text-left no-underline rounded py-2 px-3 mr-4 w-56 border border-gray-300 shadow"
+    >
+      {{ content }}
+    </div>
+  </div>
+</template>
