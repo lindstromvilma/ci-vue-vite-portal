@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import InputLabel from '@/components/InputLabel.vue'
 import TextInput from '@/components/TextInput.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
+import Popover from '@/Components/Popover.vue'
 import InputError from '@/components/InputError.vue'
 import DatePicker from '@/components/DatePicker.vue'
 import PrimaryButton from '@/components/PrimaryButton.vue'
@@ -11,6 +12,10 @@ const props = defineProps({
 	message: {
 		type: String,
 		required: true,
+	},
+	popovers: {
+		type: Array,
+		default: () => []
 	},
 })
 
@@ -35,6 +40,11 @@ const durationOptions = [
 ]
 
 const showDatePicker = computed(() => form.value.duration === 'Määräajaksi')
+
+const getPopoverContent = (id) => {
+	const popover = props.popovers.find(p => p.id === id)
+	return popover ? popover.content : ''
+}
 </script>
 
 <template>
@@ -78,12 +88,18 @@ const showDatePicker = computed(() => form.value.duration === 'Määräajaksi')
           for="duration"
           value="Voimassaoloaika"
         />
-        <BaseSelect
-          id="duration"
-          v-model="form.duration"
-          :options="durationOptions"
-          :default-value="'Valitse voimassaoloaika'"
-        />
+        <div class="flex gap-4">
+          <BaseSelect
+            id="duration"
+            v-model="form.duration"
+            :options="durationOptions"
+            :default-value="'Valitse voimassaoloaika'"
+          />
+          <Popover
+            v-if="getPopoverContent('duration')"
+            :content="getPopoverContent('duration')"
+          />
+        </div>
         <InputError
           class="mt-2"
           :message="form.errors.duration"
