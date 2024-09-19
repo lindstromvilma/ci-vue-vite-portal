@@ -82,9 +82,13 @@ For Vite, ensure that the VITE_BASE_URL and other variables are correctly set in
 #### Development:
 
 Vite:
-```bash npm run dev```\
+```bash
+npm run dev
+```
 CodeIgniter:
-```bash php spark serve```\
+```bash
+php spark serve
+```
 to work with the backend and frontend in real-time.
 
 #### Production:
