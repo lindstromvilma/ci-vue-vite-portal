@@ -14,6 +14,6 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes) {
 });
 
 // PersonController routes
-$routes->group('/persons', ['namespace' => 'App\Controllers'], function($routes) {
-	$routes->get('tyontekijat', 'PersonController::persons');
+$routes->group('/tyontekijat', ['namespace' => 'App\Controllers'], function($routes) {
+	$routes->get('', 'PersonController::persons');
 });
