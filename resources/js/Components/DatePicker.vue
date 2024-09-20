@@ -43,6 +43,6 @@ const formatter = {
     :as-range="range"
     weekdays-size="min"
     :placeholder="placeholder"
-    input-classes="border-gray-300 text-xs font-medium w-full px-3 py-2.5 border focus:border-gray-500 focus:ring-0 focus:ring-gray-500 rounded"
+    input-classes="text-xs font-medium w-full px-3 py-2.5 border border-gray-300 focus:border-gray-500 outline-none focus:outline-none rounded"
   />
 </template>

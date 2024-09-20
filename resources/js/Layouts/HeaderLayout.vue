@@ -16,7 +16,7 @@ const closeSideNav = () => {
 
 <template #header>
   <div>
-    <nav class="flex items-center justify-between gap-8 bg-blue-600 text-white font-medium text-sm py-4 px-10">
+    <nav class="flex items-center justify-between gap-8 bg-primary text-white font-medium text-sm py-4 px-10">
       <a
         href="/"
         class="text-4xl font-normal"

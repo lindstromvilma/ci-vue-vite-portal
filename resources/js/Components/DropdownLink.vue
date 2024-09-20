@@ -62,7 +62,7 @@ const leave = (el) => {
   <div>
     <a
       :href="href"
-      class="cursor-pointer hover:bg-blue-50 w-full py-1 px-4 transition-all ease-in-out duration-200 flex justify-between items-center"
+      class="cursor-pointer hover:bg-primary-50 w-full py-1 px-4 transition-all ease-in-out duration-200 flex justify-between items-center"
       @click.prevent="toggleDropdown"
     >
       {{ text }}
@@ -74,7 +74,7 @@ const leave = (el) => {
     >
       <div
         v-show="isOpen"
-        class="flex flex-col bg-blue-100 overflow-hidden"
+        class="flex flex-col bg-primary-100 overflow-hidden"
       >
         <SidebarLink
           v-for="(subLink, index) in subLinks"

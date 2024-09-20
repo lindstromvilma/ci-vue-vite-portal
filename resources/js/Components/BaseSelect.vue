@@ -20,7 +20,7 @@ function updateValue(value) {
 <template>
   <select
     :value="modelValue"
-    class="border-gray-300 text-sm placeholder font-normal w-full px-1.5 select-padding border focus:border-gray-400 outline-none focus:outline-none rounded"
+    class="text-sm placeholder font-normal w-full px-1.5 select-padding border border-gray-300 focus:border-gray-500 outline-none focus:outline-none rounded"
     @change="updateValue($event.target.value)"
   >
     <option

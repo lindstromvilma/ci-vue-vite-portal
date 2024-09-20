@@ -3,7 +3,7 @@ import DropdownLink from '@/components/DropdownLink.vue'
 </script>
 
 <template>
-  <div class="text-blue-950 text-sm flex flex-col bg-blue-200 py-10 w-1/6">
+  <div class="text-sm flex flex-col bg-primary-200 py-10 w-1/6">
     <DropdownLink
       text="Omat lomakkeet"
       :sub-links="[

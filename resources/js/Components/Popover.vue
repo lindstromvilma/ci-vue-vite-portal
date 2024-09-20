@@ -18,7 +18,7 @@ function toggle() {
 <template>
   <div class="relative flex items-center gap-4">
     <button
-      class="text-white font-bold text-base subpixel-antialiased px-4 py-2 rounded-full bg-blue-300 active:bg-blue-400 hover:bg-blue-400 outline-none focus:outline-none ease-linear transition-all duration-150"
+      class="text-white font-bold text-base subpixel-antialiased px-4 py-2 rounded-full bg-primary-300 active:bg-primary-400 hover:bg-primary-400 outline-none focus:outline-none ease-linear transition-all duration-150"
       type="button"
       @focusout="visible = false"
       @click="toggle()"
