@@ -28,9 +28,28 @@ module.exports = {
 					300: '#F0ABFC',   // fuchsia-300
 					200: '#F5D0FE',   // fuchsia-200
 				},
-				danger: '#F87171', // danger color
-				success: '#4ADE80', // success color
-				info: '#BFDBFE', // informational color
+				'info': {
+					DEFAULT: '#0EA5E9', // sky-500
+					600: '#0284C7',   // sky-600
+					400: '#38BDF8',   // sky-400
+					300: '#7DD3FC',   // sky-300
+					100: '#E0F2FE',   // sky-100
+				},
+				'danger': {
+					DEFAULT: '#F43F5E', // rose-500
+					600: '#E11D48',   // rose-600
+					400: '#FB7185',   // rose-400
+					300: '#FDA4AF',   // rose-300
+					100: '#FFE4E6',   // rose-100
+				},
+				'success': {
+					DEFAULT: '#10B981', // emerald-500
+					600: '#059669',   // emerald-600
+					400: '#34D399',   // emerald-400
+					300: '#6EE7B7',   // emerald-300
+					100: '#D1FAE5',   // emerald-100
+				},
+
 				'vtd-primary': colors.blue,
 				'vtd-secondary': colors.gray,
 			},
