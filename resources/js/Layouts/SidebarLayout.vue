@@ -8,7 +8,7 @@ import DropdownLink from '@/components/DropdownLink.vue'
       text="Omat lomakkeet"
       :sub-links="[
         { text: 'Oma lista', href: '/lista' },
-        { text: 'Sopimukset' }
+        { text: 'Ilmoitukset', href: '/ilmoitukset' }
       ]"
     />
     <DropdownLink
