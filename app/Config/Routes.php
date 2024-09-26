@@ -11,6 +11,7 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes) {
 	$routes->get('', 'HomeController::index');
 	$routes->get('lista', 'HomeController::list');
 	$routes->get('asiointilippu', 'HomeController::ticket');
+	$routes->get('alerts', 'HomeController::alerts');
 });
 
 // PersonController routes
