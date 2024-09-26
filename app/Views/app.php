@@ -16,6 +16,6 @@
     <?php endif; ?>
 </head>
 <body>
-    <div id="app" data-page="<?= $page ?>" data-props='<?= $data ?>'></div>
+		<div id="app" data-page="<?= $page ?>" <?= isset($data) ? "data-props='" . json_encode($data) . "'" : '' ?>></div>
 </body>
 </html>
