@@ -4,7 +4,7 @@ module.exports = {
 	rules: {
 		'linebreak-style': ['off'],
 		indent: ['error', 'tab', { SwitchCase: 1 }],
-		'brace-style': 'off',
+		'object-curly-spacing': ['error', 'always'],
 		'func-names': 'off',
 		'prefer-const': 'off',
 		'no-tabs': 'off',
