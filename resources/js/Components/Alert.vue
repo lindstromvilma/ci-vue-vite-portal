@@ -61,7 +61,7 @@ const buttonClasses = computed(() => {
     </div>
     <div class="shrink-0">
       <button
-        :class="`cursor-pointer hover:rounded -mr-1 ${buttonClasses}`"
+        :class="`cursor-pointer -mr-1 hover:rounded transition-all duration-150 ease-in-out ${buttonClasses}`"
         @click="dismiss"
       >
         <XMark
