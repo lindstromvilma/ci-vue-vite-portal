@@ -233,6 +233,6 @@ class PersonController extends BaseController
 						]
 				];
 
-				return view('app', ['page' => 'Persons', 'data' => json_encode($data)]);
+				return view('app', ['page' => 'Persons', 'data' => $data]);
 		}
 }

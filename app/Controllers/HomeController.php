@@ -28,7 +28,7 @@ class HomeController extends BaseController
 				    ]
         ];
 
-        return view('app', ['page' => 'Home', 'data' => json_encode($data)]);
+        return view('app', ['page' => 'Home', 'data' => $data]);
     }
 
 		public function list(): string
@@ -38,7 +38,7 @@ class HomeController extends BaseController
 						'list' => [],
         ];
 
-        return view('app', ['page' => 'List', 'data' => json_encode($data)]);
+        return view('app', ['page' => 'List', 'data' => $data]);
     }
 
 		public function ticket(): string
@@ -53,6 +53,11 @@ class HomeController extends BaseController
 						],
         ];
 
-        return view('app', ['page' => 'Ticket', 'data' => json_encode($data)]);
+        return view('app', ['page' => 'Ticket', 'data' => $data]);
     }
+
+		public function alerts(): string
+		{
+				return view('app', ['page' => 'Alerts']);
+		}
 }
