@@ -66,3 +66,5 @@ vendor/
 public/build/*
 # Ensure directory structure exists
 !public/build/.gitkeep
+
+README.md
