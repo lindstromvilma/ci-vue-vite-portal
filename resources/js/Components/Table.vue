@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, computed } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps({
 	data: {
@@ -35,27 +35,27 @@ const handlePageChange = (direction) => {
 	}
 }
 
-const handlePageNumberClick = (pageNumber) => {
-	currentPage.value = pageNumber
+const handlePageNumberClick = (page) => {
+	currentPage.value = page
 }
 
 const columns = computed(() => {
 	if (props.data.length > 0) {
-		return Object.keys(props.data[0]).map(key => key.replace(/_/g, ' '));
+		return Object.keys(props.data[0]).map(key => key.replace(/_/g, ' '))
 	}
-	return [];
-});
+	return []
+})
 
 const columnKeyMap = computed(() => {
-	const map = {};
+	const map = {}
 	if (props.data.length > 0) {
 		Object.keys(props.data[0]).forEach(key => {
-			const transformedKey = key.replace(/_/g, ' ');
-			map[transformedKey] = key;
-		});
+			const transformedKey = key.replace(/_/g, ' ')
+			map[transformedKey] = key
+		})
 	}
-	return map;
-});
+	return map
+})
 </script>
 
 <template>
@@ -100,11 +100,10 @@ const columnKeyMap = computed(() => {
         <li>
           <a
             href="#edellinen"
-            :class="{
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200':
-                true,
-              'pointer-events-none opacity-50': !hasPrevPage,
-            }"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200',
+              { 'pointer-events-none opacity-50': !hasPrevPage }
+            ]"
             @click.prevent="handlePageChange('prev')"
           >
             <svg
@@ -128,11 +127,10 @@ const columnKeyMap = computed(() => {
         >
           <a
             :href="`#sivu-${page}`"
-            :class="{
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-sky-100':
-                true,
-              'bg-sky-200': currentPage === page,
-            }"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
+              { 'bg-sky-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
+            ]"
             @click.prevent="handlePageNumberClick(page)"
           >
             {{ page }}
@@ -142,11 +140,10 @@ const columnKeyMap = computed(() => {
         <li>
           <a
             href="#seuraava"
-            :class="{
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200':
-                true,
-              'pointer-events-none opacity-50': !hasNextPage,
-            }"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-primary-50',
+              { 'pointer-events-none opacity-50': !hasNextPage }
+            ]"
             @click.prevent="handlePageChange('next')"
           >
             <svg
