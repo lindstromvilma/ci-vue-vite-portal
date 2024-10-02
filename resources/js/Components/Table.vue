@@ -59,9 +59,9 @@ const columnKeyMap = computed(() => {
 </script>
 
 <template>
-  <div>
-    <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200 bg-white text-sm">
+  <div class="max-w-6xl overflow-x-auto">
+    <div>
+      <table class="divide-y divide-gray-200 bg-white text-sm">
         <thead class="bg-gray-50">
           <tr>
             <th
