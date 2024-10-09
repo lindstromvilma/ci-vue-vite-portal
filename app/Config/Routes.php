@@ -17,4 +17,5 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes) {
 // PersonController routes
 $routes->group('/tyontekijat', ['namespace' => 'App\Controllers'], function($routes) {
 	$routes->get('', 'PersonController::persons');
+	$routes->get('kertapalkkiot', 'PersonController::singlePayments');
 });

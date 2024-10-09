@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import Table from '@/Components/Table.vue'
 
 const props = defineProps({

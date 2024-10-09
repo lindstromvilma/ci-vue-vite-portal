@@ -235,4 +235,21 @@ class PersonController extends BaseController
 
 				return view('app', ['page' => 'Persons', 'data' => $data]);
 		}
+
+		public function singlePayments(): string
+		{
+				$data = [
+						'message' => 'Kertapalkkiot',
+						'payments' => [
+								[
+										'kausi-taso' => '2024 / Hallinto- ja lakipalvelut',
+										'kausi' => 2024,
+										'varaus' => 12000,
+										'käytetty' => 200,
+								]
+						]
+		    ];
+
+				return view('app', ['page' => 'SinglePayment', 'data' => $data]);
+		}
 }

@@ -28,6 +28,7 @@ import DropdownLink from '@/components/DropdownLink.vue'
       text="Työsuhdetietojen välitysjärjestelmä"
       :sub-links="[
         { text: 'Työntetkijät', href: '/tyontekijat' },
+        { text: 'Kertapalkkiot', href: '/tyontekijat/kertapalkkiot' },
       ]"
     />
   </div>
