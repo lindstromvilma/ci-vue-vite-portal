@@ -13,13 +13,6 @@ Before you begin, ensure you have the following installed:
 - **Node.js 16+**: To manage Vite, Vue 3, and Tailwind CSS
 - **NPM or Yarn**: Node package manager
 
-## Cloning the Repository
-
-Clone the repository to your local machine:
-```bash
-git clone https://github.com/vilmavnex/ci-vite-vue.git
-```
-
 ## Installation
 #### Install Backend Dependencies
 
