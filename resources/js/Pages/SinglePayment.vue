@@ -34,15 +34,23 @@ const options = {
 	yaxis: {
 		min: 0,
 		max: varaus,
+		labels: {
+			formatter: function (value) {
+				return Math.round(value);
+			}
+		}
 	},
 	annotations: {
 		yaxis: [
 			{
 				y: varaus,
 				borderColor: '#22c55e',
+				strokeDashArray: 0,
+				borderWidth: 2,
 				label: {
 					borderColor: '#22c55e',
 					borderRadius: 0,
+					position: 'center',
 					style: {
 						color: '#fff',
 						background: '#22c55e',
@@ -52,7 +60,7 @@ const options = {
 			}
 		]
 	},
-	colors: ['#60a5fa'] // Set the color of the bars
+	colors: ['#60a5fa'], // bar color
 }
 
 onMounted(() => {

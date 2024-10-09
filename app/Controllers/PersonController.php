@@ -244,7 +244,7 @@ class PersonController extends BaseController
 								[
 										'kausi-taso' => '2024 / Hallinto- ja lakipalvelut',
 										'kausi' => 2024,
-										'varaus' => 12000,
+										'varaus' => 520,
 										'käytetty' => 200,
 								]
 						]
