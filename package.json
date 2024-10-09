@@ -9,7 +9,8 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "vue": "^3.0.0",
-    "vue-tailwind-datepicker": "^1.7.3"
+    "vue-tailwind-datepicker": "^1.7.3",
+    "vue3-charts": "^1.1.33"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.0",
