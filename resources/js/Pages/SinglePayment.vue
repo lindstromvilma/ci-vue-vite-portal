@@ -16,7 +16,7 @@ const props = defineProps({
 const chartRef = ref(null)
 let chart = null
 
-console.log('Props Data:', props.data)
+const varaus = props.payments.reduce((sum, item) => sum + item.varaus, 0)
 
 const options = {
 	chart: {
@@ -24,17 +24,35 @@ const options = {
 	},
 	series: [
 		{
-			name: 'varaus',
-			data: props.payments.map(item => item.varaus)
-		},
-		{
-			name: 'käytetty',
+			name: 'Käytetty',
 			data: props.payments.map(item => item.käytetty)
 		}
 	],
 	xaxis: {
 		categories: props.payments.map(item => item['kausi-taso'])
-	}
+	},
+	yaxis: {
+		min: 0,
+		max: varaus,
+	},
+	annotations: {
+		yaxis: [
+			{
+				y: varaus,
+				borderColor: '#22c55e',
+				label: {
+					borderColor: '#22c55e',
+					borderRadius: 0,
+					style: {
+						color: '#fff',
+						background: '#22c55e',
+					},
+					text: `Varaus: ${varaus}`
+				}
+			}
+		]
+	},
+	colors: ['#60a5fa'] // Set the color of the bars
 }
 
 onMounted(() => {
