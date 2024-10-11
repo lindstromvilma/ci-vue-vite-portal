@@ -124,7 +124,7 @@ const computedColumns = computed(() => {
 
 <template>
   <div class="max-w-6xl">
-    <div class="flex items-center justify-between overflow-x-auto">
+    <div class="flex items-center justify-between">
       <!-- search -->
       <div class="py-2 w-80">
         <TextInput
