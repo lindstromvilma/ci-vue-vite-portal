@@ -59,8 +59,9 @@ const columnKeyMap = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-6xl overflow-x-auto">
-    <div>
+  <div class="max-w-6xl">
+    <div class="overflow-x-auto">
+      <!-- table head -->
       <table class="divide-y divide-gray-200 bg-white text-sm">
         <thead class="bg-gray-50">
           <tr>
@@ -73,7 +74,7 @@ const columnKeyMap = computed(() => {
             </th>
           </tr>
         </thead>
-
+        <!-- table body -->
         <tbody class="divide-y divide-gray-200">
           <tr
             v-for="(row, rowIndex) in paginatedData"
@@ -92,7 +93,8 @@ const columnKeyMap = computed(() => {
       </table>
     </div>
 
-    <div class="border-t border-gray-200 px-4 py-3 flex justify-between items-center">
+    <!-- pagination -->
+    <div class="flex justify-between items-center px-4 py-3">
       <div class="text-sm text-gray-700">
         Sivu {{ currentPage }} / {{ totalPages }}
       </div>

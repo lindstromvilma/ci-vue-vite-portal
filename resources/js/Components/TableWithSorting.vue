@@ -17,6 +17,14 @@ const props = defineProps({
 		type: Number,
 		default: 8,
 	},
+	actions: {
+		type: Array,
+		default: () => [
+			{ label: 'Hyväksy', key: 'accept', condition: row => row.status === 'pending', style: 'bg-success-400 hover:bg-success' },
+			{ label: 'Hylkää', key: 'reject', condition: row => row.status === 'pending', style: 'bg-danger-400 hover:bg-danger' },
+			{ label: 'Muokkaa', key: 'edit', condition: () => true, style: 'bg-primary-400 hover:bg-primary' }
+		]
+	}
 })
 
 const currentPage = ref(1)
@@ -24,6 +32,10 @@ const sortingState = ref({ column: '', order: '' })
 const searchQuery = ref('')
 const columnVisibility = ref({})
 const showDropdown = ref(false)
+
+const filteredActions = (row) => {
+	return props.actions.filter(action => action.condition(row))
+}
 
 // init column visibility
 const initializeColumnVisibility = () => {
@@ -111,8 +123,8 @@ const computedColumns = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-6xl overflow-x-auto">
-    <div class="flex justify-between">
+  <div class="max-w-6xl">
+    <div class="flex items-center justify-between overflow-x-auto">
       <!-- search -->
       <div class="py-2 w-80">
         <TextInput
@@ -152,7 +164,7 @@ const computedColumns = computed(() => {
     </div>
 
     <!-- table -->
-    <div class="relative">
+    <div class="relative overflow-x-auto">
       <div>
         <table class="divide-y divide-gray-200 bg-white text-sm">
           <thead class="bg-gray-50">
@@ -167,6 +179,9 @@ const computedColumns = computed(() => {
                   {{ column.label }}
                   <ArrowUpDown class="h-4 w-4" />
                 </div>
+              </th>
+              <th class="text-xs font-medium tracking-wide text-gray-900 text-left uppercase whitespace-nowrap px-4 py-3">
+                Toiminnot
               </th>
             </tr>
           </thead>
@@ -184,81 +199,95 @@ const computedColumns = computed(() => {
               >
                 {{ row[column.key] }}
               </td>
+              <!-- render action buttons based on action conditions -->
+              <td class="whitespace-nowrap px-4 py-3 text-left">
+                <div class="flex space-x-2">
+                  <button
+                    v-for="action in filteredActions(row)"
+                    :key="action.key"
+                    :class="`${action.style} text-white px-3 py-2 rounded`"
+                    @click="$emit('row-action-click', { action: action.key, row })"
+                  >
+                    {{ action.label }}
+                  </button>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
+    </div>
 
-      <div class="border-t border-gray-200 px-4 py-3 flex justify-between items-center">
-        <div class="text-sm text-gray-700">
-          Sivu {{ currentPage }} / {{ totalPages }}
-        </div>
-        <ol class="flex gap-1 text-xs font-medium">
-          <li>
-            <a
-              href="#edellinen"
-              :class="[
-                'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200',
-                { 'pointer-events-none opacity-50': !hasPrevPage }
-              ]"
-              @click.prevent="handlePageChange('prev')"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-3"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-
-          <li
-            v-for="page in totalPages"
-            :key="page"
-          >
-            <a
-              :href="`#sivu-${page}`"
-              :class="[
-                'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
-                { 'bg-sky-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
-              ]"
-              @click.prevent="handlePageNumberClick(page)"
-            >
-              {{ page }}
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="#seuraava"
-              :class="[
-                'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-primary-50',
-                { 'pointer-events-none opacity-50': !hasNextPage }
-              ]"
-              @click.prevent="handlePageChange('next')"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="size-3"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-        </ol>
+    <!-- pagination -->
+    <div class="flex justify-between items-center px-4 py-3">
+      <div class="text-sm text-gray-700">
+        Sivu {{ currentPage }} / {{ totalPages }}
       </div>
+      <ol class="flex gap-1 text-xs font-medium">
+        <li>
+          <a
+            href="#edellinen"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200',
+              { 'pointer-events-none opacity-50': !hasPrevPage }
+            ]"
+            @click.prevent="handlePageChange('prev')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-3"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+
+        <li
+          v-for="page in totalPages"
+          :key="page"
+        >
+          <a
+            :href="`#sivu-${page}`"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
+              { 'bg-sky-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
+            ]"
+            @click.prevent="handlePageNumberClick(page)"
+          >
+            {{ page }}
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="#seuraava"
+            :class="[
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-primary-50',
+              { 'pointer-events-none opacity-50': !hasNextPage }
+            ]"
+            @click.prevent="handlePageChange('next')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-3"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+        </li>
+      </ol>
     </div>
   </div>
 </template>
