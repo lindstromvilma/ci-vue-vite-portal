@@ -22,7 +22,7 @@ const activateTab = (value) => {
         v-for="tab in tabs"
         :key="tab.value"
         class="text-sm px-4 py-2 rounded focus:outline-none"
-        :class="{ 'bg-white': activeTab === tab.value }"
+        :class="{ 'bg-white cursor-default': activeTab === tab.value }"
         @click="activateTab(tab.value)"
       >
         {{ tab.label }}
