@@ -68,8 +68,12 @@ const removeItem = (index) => {
           Lisää
         </PrimaryButton>
       </div>
-      <div class="flex flex-col gap-4">
-        <div
+      <TransitionGroup
+        class="flex flex-col gap-4"
+        name="list"
+        tag="div"
+      >
+        <li
           v-for="(item, index) in list"
           :key="index"
           class="news-item border-b py-2 flex justify-between items-center"
@@ -81,8 +85,8 @@ const removeItem = (index) => {
             class="h-5 cursor-pointer"
             @click="removeItem(index)"
           />
-        </div>
-      </div>
+        </li>
+      </TransitionGroup>
     </div>
   </div>
 </template>

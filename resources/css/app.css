@@ -21,4 +21,17 @@
 		transform: translateX(2rem);
 	  opacity: 0;
 	}
+
+	.list,
+	.list-enter-active,
+	.list-leave-active {
+	  transition: all 0.3s ease;
+	}
+
+	.list,
+	.list-enter-from,
+	.list-leave-to {
+	  opacity: 0;
+	  transform: translateX(-30px);
+	}
 }
