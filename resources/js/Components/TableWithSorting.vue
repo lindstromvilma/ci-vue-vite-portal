@@ -178,7 +178,7 @@ const computedColumns = computed(() => {
               class="hover:bg-gray-100"
             >
               <td
-                v-for="(column, colIndex) in computedColumns"
+                v-for="(column, colIndex) in visibleColumns"
                 :key="colIndex"
                 class="whitespace-nowrap px-4 py-3 text-gray-700 text-left"
               >
