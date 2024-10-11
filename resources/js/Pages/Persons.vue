@@ -1,4 +1,5 @@
 <script setup>
+import SimpleTabs from '@/components/SimpleTabs.vue'
 import Table from '@/Components/Table.vue'
 import TableWithSorting from '@/Components/TableWithSorting.vue'
 
@@ -12,6 +13,11 @@ const props = defineProps({
 		default: () => [],
 	},
 })
+
+const tabs = [
+	{ label: 'Tavallinen taulukko', value: 'basic-table' },
+	{ label: 'Data taulukko', value: 'sortable-table' },
+]
 </script>
 
 <template>
@@ -20,10 +26,13 @@ const props = defineProps({
       {{ message }}
     </h1>
 
-    <h3>Taulukko haulla ja sorttauksella sekä sarakkeiden näkyvyyden valinnalla</h3>
-    <TableWithSorting :data="persons" />
-    <br>
-    <h3>Tavallinen taulukko sivutuksella</h3>
-    <Table :data="persons" />
+    <SimpleTabs :tabs="tabs">
+      <template #basic-table>
+        <Table :data="persons" />
+      </template>
+      <template #sortable-table>
+        <TableWithSorting :data="persons" />
+      </template>
+    </SimpleTabs>
   </div>
 </template>
