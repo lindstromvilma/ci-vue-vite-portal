@@ -1,5 +1,6 @@
 <script setup>
 import Table from '@/Components/Table.vue'
+import TableWithSorting from '@/Components/TableWithSorting.vue'
 
 const props = defineProps({
 	message: {
@@ -19,6 +20,10 @@ const props = defineProps({
       {{ message }}
     </h1>
 
+    <h3>Taulukko haulla ja sorttauksella sekä sarakkeiden näkyvyyden valinnalla</h3>
+    <TableWithSorting :data="persons" />
+    <br>
+    <h3>Tavallinen taulukko sivutuksella</h3>
     <Table :data="persons" />
   </div>
 </template>
