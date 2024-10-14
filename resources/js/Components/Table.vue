@@ -62,7 +62,7 @@ const columnKeyMap = computed(() => {
   <div class="max-w-6xl">
     <div class="overflow-x-auto">
       <!-- table head -->
-      <table class="divide-y divide-gray-200 bg-white text-sm">
+      <table class="divide-y divide-gray-200 bg-white text-sm w-full">
         <thead class="bg-gray-50">
           <tr>
             <th
