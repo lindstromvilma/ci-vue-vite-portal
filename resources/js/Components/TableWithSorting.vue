@@ -84,10 +84,8 @@ const hasNextPage = computed(() => currentPage.value < totalPages.value)
 
 // handle pagination
 const handlePageChange = (direction) => {
-	if (direction === 'prev' && hasPrevPage.value) {
-		currentPage.value -= 1
-	} else if (direction === 'next' && hasNextPage.value) {
-		currentPage.value += 1
+	if ((direction === 'prev' && hasPrevPage.value) || (direction === 'next' && hasNextPage.value)) {
+		currentPage.value += direction === 'prev' ? -1 : 1
 	}
 }
 
@@ -97,12 +95,9 @@ const handlePageNumberClick = (page) => {
 
 // handle sorting logic
 const toggleSorting = (column) => {
-	if (sortingState.value.column === column) {
-		sortingState.value.order = sortingState.value.order === 'asc' ? 'desc' : 'asc'
-	} else {
-		sortingState.value.column = column
-		sortingState.value.order = 'asc'
-	}
+	const isSameColumn = sortingState.value.column === column
+	sortingState.value.column = column
+	sortingState.value.order = isSameColumn && sortingState.value.order === 'asc' ? 'desc' : 'asc'
 }
 
 // dynamic column generation
@@ -160,7 +155,7 @@ const computedColumns = computed(() => {
     <!-- table -->
     <div class="relative overflow-x-auto">
       <div>
-        <table class="divide-y divide-gray-200 bg-white text-sm">
+        <table class="divide-y divide-gray-200 bg-white text-sm w-full">
           <thead class="bg-gray-50">
             <tr>
               <th
