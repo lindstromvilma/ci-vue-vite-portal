@@ -39,15 +39,11 @@ const filteredActions = (row) => {
 
 // init column visibility
 const initializeColumnVisibility = () => {
-	if (props.columns.length > 0) {
-		props.columns.forEach(col => {
-			columnVisibility.value[col.key] = true
-		})
-	} else if (props.data.length > 0) {
-		Object.keys(props.data[0]).forEach(key => {
-			columnVisibility.value[key] = true
-		})
-	}
+	const source = props.columns.length > 0 ? props.columns : Object.keys(props.data[0] || {})
+	source.forEach(col => {
+		const key = props.columns.length > 0 ? col.key : col
+		columnVisibility.value[key] = true
+	})
 }
 
 initializeColumnVisibility()
@@ -59,13 +55,11 @@ const visibleColumns = computed(() => {
 
 // sort data
 const sortedData = computed(() => {
-	if (!sortingState.value.column) return props.data
 	const { column, order } = sortingState.value
-	return [...props.data].sort((a, b) => {
-		if (a[column] < b[column]) return order === 'asc' ? -1 : 1
-		if (a[column] > b[column]) return order === 'asc' ? 1 : -1
-		return 0
-	})
+	if (!column) return props.data
+	return [...props.data].sort((a, b) =>
+		(a[column] > b[column] ? 1 : -1) * (order === 'asc' ? 1 : -1)
+	)
 })
 
 // filter data based on search query
