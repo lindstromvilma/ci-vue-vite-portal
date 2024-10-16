@@ -49,6 +49,19 @@ class FormController extends BaseController
                             "Viranhaltija (esihenkilö)"
                         ],
                     ],
+                    [
+                        'name' => "Monivalinta",
+                        'type' => "multiselect",
+                        'savedTo' => "testi_multiselect",
+                        'order' => 20,
+                        'required' => true,
+                        'values' => [
+                            "Vaihtoehto 1",
+                            "Vaihtoehto 2",
+                            "Vaihtoehto 3",
+														"Vaihtoehto 4",
+                        ],
+                    ],
                 ]
             ]
         ];
