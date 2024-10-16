@@ -21,7 +21,7 @@ import DropdownLink from '@/components/DropdownLink.vue'
     <DropdownLink
       text="Pyynnöt ja tilaukset"
       :sub-links="[
-        { text: 'Tilauslomake' }
+        { text: 'Tilauslomake', href: '/lomake' }
       ]"
     />
     <DropdownLink

@@ -19,3 +19,8 @@ $routes->group('/tyontekijat', ['namespace' => 'App\Controllers'], function($rou
 	$routes->get('', 'PersonController::persons');
 	$routes->get('kertapalkkiot', 'PersonController::singlePayments');
 });
+
+// FormController routes
+$routes->group('/lomake', ['namespace' => 'App\Controllers'], function($routes) {
+	$routes->get('', 'FormController::index');
+});
