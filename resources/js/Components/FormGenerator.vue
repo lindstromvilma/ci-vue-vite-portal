@@ -1,7 +1,7 @@
 <script setup>
 import { reactive, ref, defineAsyncComponent, onMounted } from 'vue'
-import InputLabel from '../InputLabel.vue'
-import InputError from '../InputError.vue'
+import InputLabel from './InputLabel.vue'
+import InputError from './InputError.vue'
 
 const props = defineProps({
 	form: {
@@ -23,11 +23,11 @@ const generateFormData = (fields) => {
 
 // component mapping for dynamic imports based on field type
 const componentMap = {
-	text: defineAsyncComponent(() => import('../TextInput.vue')),
-	select: defineAsyncComponent(() => import('../BaseSelect.vue')),
-	multiselect: defineAsyncComponent(() => import('../MultiSelect.vue')),
-	date: defineAsyncComponent(() => import('../DatePicker.vue')),
-	textarea: defineAsyncComponent(() => import('../TextArea.vue')),
+	text: defineAsyncComponent(() => import('./TextInput.vue')),
+	select: defineAsyncComponent(() => import('./BaseSelect.vue')),
+	multiselect: defineAsyncComponent(() => import('./MultiSelect.vue')),
+	date: defineAsyncComponent(() => import('./DatePicker.vue')),
+	textarea: defineAsyncComponent(() => import('./TextArea.vue')),
 }
 
 // get component based on the field type
