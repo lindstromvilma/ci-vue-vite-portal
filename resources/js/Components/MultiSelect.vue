@@ -32,6 +32,7 @@ const selectOption = (option) => {
 	} else {
 		emit('update:modelValue', props.modelValue.filter(item => item !== option))
 	}
+	isOpen.value = false
 }
 
 const removeOption = (option) => {
@@ -42,7 +43,7 @@ const isSelected = (option) => {
 	return props.modelValue.includes(option)
 }
 
-// Filter options to exclude selected items
+// filter options to show only not selected options
 const filteredOptions = computed(() => {
 	return props.options.filter(option => !isSelected(option))
 })
@@ -51,7 +52,10 @@ const filteredOptions = computed(() => {
 <template>
   <div class="relative">
     <div
-      class="flex items-center text-sm placeholder font-normal px-2 select-padding bg-white border border-gray-300 focus:border-gray-500 outline-none focus:outline-none rounded"
+      :class="[
+        'flex items-center text-sm placeholder font-normal px-2 bg-white border border-gray-300 focus:border-gray-500 outline-none focus:outline-none rounded h-10',
+        modelValue.length ? 'py-1' : 'select-padding'
+      ]"
       @click="toggleDropdown"
     >
       <div class="flex-grow flex flex-wrap gap-1">
@@ -59,7 +63,7 @@ const filteredOptions = computed(() => {
           <div
             v-for="option in modelValue"
             :key="option.id || option.value"
-            class="flex items-center gap-1.5 bg-gray-100 rounded px-2 py-1"
+            class="flex items-center gap-1.5 bg-gray-100 rounded px-2 py-0.5"
           >
             <span>{{ option.name || option }}</span>
             <Xmark
@@ -79,7 +83,7 @@ const filteredOptions = computed(() => {
       class="absolute left-0 right-0 z-10 bg-white border border-gray-100 rounded shadow-md"
     >
       <div
-        v-for="option in options"
+        v-for="option in filteredOptions"
         :key="option.id || option.value"
         class="text-sm flex items-center p-2 cursor-pointer hover:bg-gray-100"
         @click.stop="selectOption(option)"
