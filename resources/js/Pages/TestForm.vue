@@ -15,7 +15,7 @@ const props = defineProps({
 <template>
   <div class="flex flex-col gap-10 w-full max-w-screen-2xl">
     <h1>{{ message }}</h1>
-    <!-- generoitu formi -->
+    <!-- formi generoidaan datasta joka välitetään näkymään -->
     <Form :form="form" />
   </div>
 </template>
