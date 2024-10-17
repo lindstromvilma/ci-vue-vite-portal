@@ -8,6 +8,8 @@ const props = defineProps({
 		required: true,
 	},
 })
+
+defineEmits(['close'])
 </script>
 
 <template>
