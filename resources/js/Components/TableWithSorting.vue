@@ -245,7 +245,7 @@ const computedColumns = computed(() => {
             :href="`#sivu-${page}`"
             :class="[
               'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
-              { 'bg-sky-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
+              { 'bg-primary-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
             ]"
             @click.prevent="handlePageNumberClick(page)"
           >
