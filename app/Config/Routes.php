@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 // HomeController routes
-$routes->group('/', ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('/', ['namespace' => 'App\Controllers'], function ($routes) {
 	$routes->get('', 'HomeController::index');
 	$routes->get('lista', 'HomeController::list');
 	$routes->get('asiointilippu', 'HomeController::ticket');
@@ -15,12 +15,22 @@ $routes->group('/', ['namespace' => 'App\Controllers'], function($routes) {
 });
 
 // PersonController routes
-$routes->group('/tyontekijat', ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('/tyontekijat', ['namespace' => 'App\Controllers'], function ($routes) {
 	$routes->get('', 'PersonController::persons');
 	$routes->get('kertapalkkiot', 'PersonController::singlePayments');
 });
 
+// ProfileController routes
+$routes->group('/omat-tiedot', ['namespace' => 'App\Controllers'], function ($routes) {
+	$routes->get('', 'ProfileController::index');
+});
+
 // FormController routes
-$routes->group('/lomake', ['namespace' => 'App\Controllers'], function($routes) {
+$routes->group('/lomake', ['namespace' => 'App\Controllers'], function ($routes) {
 	$routes->get('', 'FormController::index');
+});
+
+// ViewController routes
+$routes->group('/viewcontroller', ['namespace' => 'App\Controllers'], function ($routes) {
+	$routes->get('alerts', 'ViewController::alerts');
 });

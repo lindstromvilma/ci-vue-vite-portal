@@ -1,40 +1,47 @@
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import HeaderLink from '../Components/HeaderLink.vue'
+import Hamburger from '@/Components/Icons/Hamburger.vue'
 import User from '@/Components/Icons/User.vue'
 
-const isSideNavOpen = ref(false)
+const isMobileMenuOpen = ref(false)
 
-const toggleSideNav = () => {
-	isSideNavOpen.value = !isSideNavOpen.value
-}
-
-const closeSideNav = () => {
-	isSideNavOpen.value = false
+const toggleMobileMenu = () => {
+	isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 </script>
 
 <template #header>
   <div>
-    <nav class="flex items-center justify-between gap-8 bg-primary text-white font-medium text-sm py-4 px-10">
+    <nav class="text-white flex items-center justify-between gap-8 bg-primary font-medium text-sm py-4 sm:px-6 md:px-10 rounded">
+      <Hamburger
+        class="h-7 sm:inline-block md:hidden cursor-pointer hover:scale-110 transition duration-200 ease-in-out"
+        @click="toggleMobileMenu"
+      />
       <a
         href="/"
-        class="text-4xl font-normal"
+        class="text-2xl font-medium"
       >
-        Luukku 2.0
+        Portaali
       </a>
-      <div class="flex gap-4 flex-grow">
-        <HeaderLink text="Omat lomakkeet" />
+      <div class="sm:hidden md:flex gap-4 flex-grow">
+        <HeaderLink text="Oma osio" />
         <HeaderLink text="Lomakkeet" />
-        <HeaderLink text="Muita ilmoituksia" />
+        <HeaderLink text="Ilmoitukset" />
       </div>
-      <div class="flex flex-col items-center gap-1 cursor-pointer">
-        <div class="flex gap-2 items-center">
-          <User class="h-4 stroke-white" />
-          <a>Kirjautunut käyttäjä</a>
-        </div>
-        <p>Toimiala</p>
-      </div>
+      <a href="/omat-tiedot">
+        <User
+          class="h-7 cursor-pointer hover:scale-110 transition duration-200 ease-in-out"
+        />
+      </a>
     </nav>
+    <div
+      v-if="isMobileMenuOpen"
+      class="sm:flex md:hidden flex-col bg-primary-50 py-4 px-6 rounded m-2"
+    >
+      <HeaderLink text="Oma osio" />
+      <HeaderLink text="Lomakkeet" />
+      <HeaderLink text="Ilmoitukset" />
+    </div>
   </div>
 </template>

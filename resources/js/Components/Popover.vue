@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import QuestionMark from './Icons/QuestionMark.vue'
 
 const props = defineProps({
 	content: {
@@ -17,14 +18,12 @@ function toggle() {
 
 <template>
   <div class="relative flex items-center gap-4">
-    <button
-      class="text-white font-bold text-base subpixel-antialiased px-4 py-2 rounded-full bg-primary-300 active:bg-primary-400 hover:bg-primary-400 outline-none focus:outline-none ease-linear transition-all duration-150"
+    <QuestionMark
+      class="h-7 cursor-pointer focus:outline-none"
       type="button"
       @focusout="visible = false"
       @click="toggle()"
-    >
-      ?
-    </button>
+    />
     <div
       v-show="visible"
       class="absolute right-full bg-white z-50 font-normal text-sm text-left no-underline rounded py-2 px-3 mr-4 w-56 border border-gray-300 shadow"

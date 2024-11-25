@@ -9,7 +9,7 @@ const props = defineProps({
 	},
 	intent: {
 		type: String,
-		validator: (value) => ['info', 'success', 'danger'].includes(value),
+		validator: (value) => ['info', 'success', 'danger', 'warning'].includes(value),
 		default: 'info',
 	},
 	show: {
@@ -24,24 +24,28 @@ const props = defineProps({
 const containerClasses = computed(() => {
 	switch (props.intent) {
 		case 'success':
-			return 'bg-success-100'
+			return 'bg-success'
 		case 'danger':
-			return 'bg-danger-100'
+			return 'bg-danger'
+		case 'warning':
+			return 'bg-warning'
 		case 'info':
 		default:
-			return 'bg-info-100'
+			return 'bg-info'
 	}
 })
 
 const buttonClasses = computed(() => {
 	switch (props.intent) {
 		case 'success':
-			return 'hover:bg-success-300'
+			return 'hover:bg-success-600'
 		case 'danger':
-			return 'hover:bg-danger-300'
+			return 'hover:bg-danger-600'
+		case 'warning':
+			return 'hover:bg-warning-600'
 		case 'info':
 		default:
-			return 'hover:bg-info-300'
+			return 'hover:bg-info-600'
 	}
 })
 </script>

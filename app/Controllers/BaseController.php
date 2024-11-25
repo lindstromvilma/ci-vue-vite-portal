@@ -14,8 +14,7 @@ use Psr\Log\LoggerInterface;
  *
  * BaseController provides a convenient place for loading components
  * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
+ * Extend this class in any new controllers: class Home extends BaseController
  *
  * For security be sure to declare any new methods as protected or private.
  */
@@ -41,18 +40,35 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-    // protected $session;
+    protected $session;
+    protected $menu;
+    protected $config;
+    protected $cname;
+    protected $data; // This contains all the data to be send for the view rendering
 
     /**
+		 * Constructor
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
-        parent::initController($request, $response, $logger);
+        parent::initController($request, $response, $logger); // Do Not Edit This Line
 
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+        /**
+         * Get called controller class name for directory level mapping
+         */
+        $class = new \ReflectionClass(get_class($this));
+        $this->cname = $class->getShortName();
     }
+
+		/**
+     * Render a View - Extends CI4 view function by allowing us to refer
+     * directly to a file under folder named after controller/method
+     */
+    public function rView($data, $file = false)
+    {
+        $data = (array) $data;
+        $file = $file != false ? $file : debug_backtrace()[1]['function'];
+        return view($this->cname.'/'.$file, $data);
+		}
 }

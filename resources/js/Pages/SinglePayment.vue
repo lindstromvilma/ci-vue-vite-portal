@@ -22,10 +22,11 @@ const options = {
 	chart: {
 		type: 'bar'
 	},
+	colors: ['#e5c4f5'],
 	series: [
 		{
 			name: 'Käytetty',
-			data: props.payments.map(item => item.käytetty)
+			data: props.payments.map(item => item.käytetty),
 		}
 	],
 	xaxis: {
@@ -44,23 +45,38 @@ const options = {
 		yaxis: [
 			{
 				y: varaus,
-				borderColor: '#22c55e',
+				borderColor: '#aee5c9',
 				strokeDashArray: 0,
 				borderWidth: 2,
 				label: {
-					borderColor: '#22c55e',
+					borderColor: '#aee5c9',
 					borderRadius: 0,
 					position: 'center',
 					style: {
-						color: '#fff',
-						background: '#22c55e',
+						color: '#19171B',
+						fontSize: '12px',
+						fontWeight: 'bold',
+						background: '#aee5c9',
+						padding: {
+							left: 10,
+							right: 10,
+							top: 5,
+							bottom: 5
+						}
 					},
 					text: `Varaus: ${varaus}`
 				}
 			}
-		]
+		],
 	},
-	colors: ['#60a5fa'], // bar color
+	dataLabels: {
+		enabled: true,
+		style: {
+			colors: ['#343a40'],
+			fontSize: '12px',
+			fontWeight: 'bold',
+		}
+	}
 }
 
 onMounted(() => {

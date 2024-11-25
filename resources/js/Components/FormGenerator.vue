@@ -47,10 +47,11 @@ onMounted(() => {
     <h2>
       {{ form.name }}
     </h2>
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col flex-nowrap md:flex-row md:flex-wrap gap-4">
       <div
         v-for="(field, id) in form.fields"
         :key="id"
+        class="w-full md:w-2/5"
       >
         <InputLabel
           :value="field.name"

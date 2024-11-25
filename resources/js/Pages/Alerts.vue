@@ -23,7 +23,7 @@ const toggleShow = () => {
     <Alert
       v-if="showAlert"
       :dismiss="toggleShow"
-      intent="info"
+      intent="warning"
       title="Ilmoitus"
     >
       <p>Tämä on ilmoituksen sisältö ja sen voi määrittää vaikka dynaamisesti. Ilmoitus voi olla info, success tai danger, riippuen sen tarkoituksesta.</p>

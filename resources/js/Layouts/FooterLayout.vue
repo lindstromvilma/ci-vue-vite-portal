@@ -1,7 +1,7 @@
 <template #footer>
-  <div class="bg-primary text-center py-2.5">
-    <p class="font-normal text-xs text-white">
-      &copy; 2024 Testi ympärsitö Codeigniter 4 ja Vue.js 3
+  <div class="text-white bg-primary text-center py-2.5 rounded">
+    <p class="font-normal text-xs">
+      &copy; Demo-ympäristö | Rakennettu CodeIgniter 4, Vue 3 ja Vite
     </p>
   </div>
 </template>

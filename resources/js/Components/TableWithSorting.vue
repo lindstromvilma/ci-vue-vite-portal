@@ -20,9 +20,9 @@ const props = defineProps({
 	actions: {
 		type: Array,
 		default: () => [
-			{ label: 'Hyväksy', key: 'accept', condition: row => row.status === 'pending', style: 'bg-success-400 hover:bg-success' },
-			{ label: 'Hylkää', key: 'reject', condition: row => row.status === 'pending', style: 'bg-danger-400 hover:bg-danger' },
-			{ label: 'Muokkaa', key: 'edit', condition: () => true, style: 'bg-primary-400 hover:bg-primary' }
+			{ label: 'Hyväksy', key: 'accept', condition: row => row.status === 'pending', style: 'bg-success hover:bg-success-600' },
+			{ label: 'Hylkää', key: 'reject', condition: row => row.status === 'pending', style: 'bg-danger hover:bg-danger-600' },
+			{ label: 'Muokkaa', key: 'edit', condition: () => true, style: 'text-white bg-primary hover:bg-primary-600' }
 		]
 	}
 })
@@ -112,7 +112,7 @@ const computedColumns = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-6xl">
+  <div>
     <div class="flex items-center justify-between">
       <!-- search -->
       <div class="py-2 w-80">
@@ -134,7 +134,7 @@ const computedColumns = computed(() => {
         </PrimaryButton>
         <div
           v-if="showDropdown"
-          class="flex flex-col gap-1 absolute right-0 z-20 mt-2 w-max px-4 py-3 bg-white border border-gray-300 rounded shadow"
+          class="flex flex-col gap-1 absolute right-0 z-20 mt-2 w-max px-4 py-3 bg-white border border-gray-200 rounded shadow"
         >
           <div
             v-for="(column, index) in computedColumns"
@@ -144,6 +144,7 @@ const computedColumns = computed(() => {
               <input
                 v-model="columnVisibility[column.key]"
                 type="checkbox"
+                class="accent-primary-600 cursor-pointer"
               />
               <span>{{ column.label }}</span>
             </label>
@@ -179,7 +180,6 @@ const computedColumns = computed(() => {
             <tr
               v-for="(row, rowIndex) in paginatedData"
               :key="rowIndex"
-              class="hover:bg-gray-100"
             >
               <td
                 v-for="(column, colIndex) in visibleColumns"
@@ -194,7 +194,7 @@ const computedColumns = computed(() => {
                   <button
                     v-for="action in filteredActions(row)"
                     :key="action.key"
-                    :class="`${action.style} text-white px-3 py-2 rounded`"
+                    :class="`${action.style} px-3 py-2 rounded`"
                     @click="$emit('row-action-click', { action: action.key, row })"
                   >
                     {{ action.label }}
@@ -217,7 +217,7 @@ const computedColumns = computed(() => {
           <a
             href="#edellinen"
             :class="[
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200',
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-accent',
               { 'pointer-events-none opacity-50': !hasPrevPage }
             ]"
             @click.prevent="handlePageChange('prev')"
@@ -245,7 +245,7 @@ const computedColumns = computed(() => {
             :href="`#sivu-${page}`"
             :class="[
               'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
-              { 'bg-primary-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
+              { 'bg-accent cursor-default': currentPage === page, 'bg-white hover:bg-accent': currentPage !== page }
             ]"
             @click.prevent="handlePageNumberClick(page)"
           >
@@ -257,7 +257,7 @@ const computedColumns = computed(() => {
           <a
             href="#seuraava"
             :class="[
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-primary-50',
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-accent',
               { 'pointer-events-none opacity-50': !hasNextPage }
             ]"
             @click.prevent="handlePageChange('next')"

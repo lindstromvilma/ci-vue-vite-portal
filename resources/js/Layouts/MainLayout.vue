@@ -5,27 +5,27 @@ import SidebarLayout from '@/layouts/SidebarLayout.vue'
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="bg-gray-50 flex flex-col min-h-screen">
     <!-- Header -->
-    <header-layout>
+    <header-layout class="mt-2 mx-2">
       <slot name="header" />
     </header-layout>
 
     <!-- Main Content Area with Sidebar -->
     <div class="flex flex-1">
       <!-- Sidebar Layout -->
-      <sidebar-layout>
+      <sidebar-layout class="m-2">
         <slot name="sidebar" />
       </sidebar-layout>
 
       <!-- Main Content Area -->
-      <main class="flex grow justify-center bg-gray-50 py-10 px-12">
+      <main class="flex grow justify-center py-10 sm:px-6 md:px-12 w-full overflow-x-auto">
         <slot />
       </main>
     </div>
 
     <!-- Footer -->
-    <footer-layout class="text-white text-sm tracking-wide">
+    <footer-layout class="text-sm tracking-wide mb-2 mx-2">
       <slot name="footer" />
     </footer-layout>
   </div>

@@ -14,8 +14,8 @@ defineProps({
 <template>
   <button
     :type="type"
-    class="text-sm font-medium text-white text-center px-5 py-2 rounded bg-success hover:bg-success-600 transition ease-in-out duration-150"
-    :class="[{ 'bg-success-600 !text-white': active }]"
+    class="text-sm font-medium text-center px-5 py-2 rounded bg-success hover:bg-success-600 transition ease-in-out duration-150"
+    :class="[{ 'bg-success-600': active }]"
   >
     <slot />
   </button>

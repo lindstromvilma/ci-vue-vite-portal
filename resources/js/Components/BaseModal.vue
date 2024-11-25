@@ -15,7 +15,7 @@ defineEmits(['close'])
 <template>
   <div
     v-show="modalActive"
-    class="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50"
+    class="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center z-50"
   >
     <form
       v-if="modalActive"

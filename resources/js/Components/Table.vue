@@ -59,7 +59,7 @@ const columnKeyMap = computed(() => {
 </script>
 
 <template>
-  <div class="max-w-6xl">
+  <div>
     <div class="overflow-x-auto">
       <!-- table head -->
       <table class="divide-y divide-gray-200 bg-white text-sm w-full">
@@ -79,7 +79,6 @@ const columnKeyMap = computed(() => {
           <tr
             v-for="(row, rowIndex) in paginatedData"
             :key="rowIndex"
-            class="hover:bg-gray-100"
           >
             <td
               v-for="(column, colIndex) in columns"
@@ -103,7 +102,7 @@ const columnKeyMap = computed(() => {
           <a
             href="#edellinen"
             :class="[
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-gray-200',
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 rtl:rotate-180 hover:bg-accent',
               { 'pointer-events-none opacity-50': !hasPrevPage }
             ]"
             @click.prevent="handlePageChange('prev')"
@@ -131,7 +130,7 @@ const columnKeyMap = computed(() => {
             :href="`#sivu-${page}`"
             :class="[
               'inline-flex size-8 items-center justify-center rounded border border-gray-100 text-gray-900',
-              { 'bg-sky-200 cursor-default': currentPage === page, 'bg-white hover:bg-primary-50': currentPage !== page }
+              { 'bg-accent cursor-default': currentPage === page, 'bg-white hover:bg-accent': currentPage !== page }
             ]"
             @click.prevent="handlePageNumberClick(page)"
           >
@@ -143,7 +142,7 @@ const columnKeyMap = computed(() => {
           <a
             href="#seuraava"
             :class="[
-              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-primary-50',
+              'inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 hover:bg-accent',
               { 'pointer-events-none opacity-50': !hasNextPage }
             ]"
             @click.prevent="handlePageChange('next')"

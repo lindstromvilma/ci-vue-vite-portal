@@ -17,6 +17,10 @@ const props = defineProps({
 		required: false,
 		default: () => [],
 	},
+	icon: {
+		type: Object,
+		required: false,
+	},
 })
 
 const isOpen = ref(false)
@@ -62,10 +66,17 @@ const leave = (el) => {
   <div>
     <a
       :href="href"
-      class="cursor-pointer hover:bg-primary-50 w-full py-1 px-4 transition-all ease-in-out duration-200 flex justify-between items-center"
+      :class="['cursor-pointer hover:bg-primary-100 w-full py-1 px-4 transition-all ease-in-out duration-200 flex justify-between items-center', isOpen ? 'bg-primary-100' : 'bg-primary-50']"
       @click.prevent="toggleDropdown"
     >
-      {{ text }}
+      <div class="flex items-center gap-2 w-full pr-2">
+        <component
+          :is="icon"
+          v-if="icon"
+          class="h-6"
+        />
+        {{ text }}
+      </div>
     </a>
     <transition
       @before-enter="beforeEnter"
